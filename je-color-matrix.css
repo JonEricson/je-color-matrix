@@ -1,0 +1,223 @@
+/* Color Contrast only: Begin */
+/* Base table styles */
+.colour-matrix {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+/* Table header and cell base styles */
+.colour-matrix th,
+.colour-matrix td {
+	background: var(--bg-colour);
+	color: var(--text-colour);
+}
+
+/* Colour name styling */
+.colour-matrix .colour-name {
+	text-transform: capitalize;
+}
+
+/* Colour value styling (hex values) */
+.colour-matrix .colour-value {
+	font-size: .9rem;
+}
+
+/* Rating cell styles */
+.rating-cell {
+	padding: .5rem;
+}
+
+/* Rating label styling */
+.colour-matrix .rating {
+	padding: .5rem 1rem;
+	border-radius: 100vw;
+	font-weight: 700;
+	display: none; /* Hidden by default, shown when checkbox is checked */
+}
+
+/* Styles for different ratings */
+.colour-matrix .rating-G {
+	color: #856404;
+	background-color: #fff3cd;
+	border-color: #ffeeba;
+}
+
+.colour-matrix .rating-AA,
+.colour-matrix .rating-AAA {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+}
+
+/* Styles for when no text should be shown */
+.colour-matrix .rating-null,
+.colour-matrix .rating-cell.not-text {
+	background: var(--surface-10);
+	color: transparent;
+}
+
+/* Colour details shown in cells */
+.rating-cell .colours {
+	font-size: 1.2rem;
+}
+
+.rating-cell .colours span {
+	font-weight: 700;
+}
+
+/* Checkbox styles - hidden because it's used as a toggle */
+#toggleRatings {
+	display: none;
+}
+
+#toggleRatings,
+#toggleRatings:after,
+#toggleRatings:before,
+#toggleRatings *,
+#toggleRatings *:after,
+#toggleRatings *:before,
+#toggleRatings + .tgl-btn {
+	box-sizing: border-box;
+}
+#toggleRatings::-moz-selection,
+#toggleRatings:after::-moz-selection,
+#toggleRatings:before::-moz-selection,
+#toggleRatings *::-moz-selection,
+#toggleRatings *:after::-moz-selection,
+#toggleRatings *:before::-moz-selection,
+#toggleRatings + .toggle-button::-moz-selection,
+#toggleRatings::selection,
+#toggleRatings:after::selection,
+#toggleRatings:before::selection,
+#toggleRatings *::selection,
+#toggleRatings *:after::selection,
+#toggleRatings *:before::selection,
+#toggleRatings + .tgl-btn::selection {
+	background: none;
+}
+#toggleRatings + .toggle-button {
+	outline: 0;
+	display: block;
+	width: 4em;
+	height: 2em;
+	position: relative;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#toggleRatings + .toggle-button:after,
+#toggleRatings + .toggle-button:before {
+	position: relative;
+	display: block;
+	content: "";
+	width: 50%;
+	height: 100%;
+}
+#toggleRatings + .toggle-button:after {
+	left: 0;
+}
+#toggleRatings + .toggle-button:before {
+	display: none;
+}
+#toggleRatings:checked + .toggle-button:after {
+	left: 50%;
+}
+
+#toggleRatings + .toggle-button {
+	background: #f0f0f0;
+	border-radius: 2em;
+	padding: 2px;
+	transition: all 0.4s ease;
+}
+#toggleRatings + .toggle-button:after {
+	border-radius: 50%;
+	background: #fff;
+	transition: all 0.2s ease;
+}
+#toggleRatings:checked + .toggle-button {
+	background: #9FD6AE;
+}
+
+
+
+/* Toggle button styles */
+.toggle-button {
+	margin-top: 12px;
+	margin-bottom: 1rem;
+}
+
+/* Toggle button text for screen readers */
+.toggle-button span {
+	display: none;
+	visibility: hidden;
+}
+
+/* Content before the toggle button */
+.toggle-button::before {
+	content: "Show Ratings";
+}
+
+/* Styles when the checkbox is checked */
+
+#toggleRatings:checked ~ * .rating-cell {
+	background: unset;
+	color: unset;
+}
+
+#toggleRatings:checked ~ * .rating-cell .rating {
+	display: inline-block;
+}
+
+#toggleRatings:checked ~ * .rating-cell .colours {
+	display: none;
+}
+
+/* Tooltip styles */
+[data-tooltip]{
+	position: relative;
+	cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after{
+	--scale: 0;
+	--arrow-size: 8px;
+	--tooltip-color: hsla(191, 0%, 95%, 0.9);
+    --tooltip-text-color: #222222;
+	position: absolute;
+	top: -.25rem;
+	left: 50%;
+	transform: translateX(-50%)  translateY(var(--translate-y, 0)) scale(var(--scale));
+	transition: 150ms transform;
+	transform-origin: bottom center;
+}
+
+[data-tooltip]:before{
+	--translate-y: calc(-100% - var(--arrow-size));
+	content: attr(data-tooltip);
+        color: var(--tooltip-text-color);
+	font-size: .8rem;
+	line-height: 1;
+	padding: .4rem .6rem;
+	width: max-content;
+	background: var(--tooltip-color);
+	border-radius: .3rem;
+	text-align: center;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after{
+	--scale: 1;
+}
+
+[data-tooltip]:after{
+	--translate-y: calc(-1 * var(--arrow-size));
+	content:'';
+	border: var(--arrow-size) solid transparent;
+	border-top-color: var(--tooltip-color);
+	transform-origin: top center;
+}
+/* Color Contrast only: End */
